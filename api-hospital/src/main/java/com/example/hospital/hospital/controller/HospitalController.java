@@ -5,6 +5,8 @@ import com.example.hospital.hospital.model.Hospital;
 import com.example.hospital.hospital.model.HospitalDetailDto;
 import com.example.hospital.hospital.model.HospitalDto;
 import com.example.hospital.hospital.service.HospitalService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/hospital")
 @RequiredArgsConstructor
+@Tag(name="Hospital API", description = "Hospital API 입니다.")
 public class HospitalController {
     private final HospitalService hospitalService;
 
@@ -53,6 +56,7 @@ public class HospitalController {
     }
 
     @PostMapping("/register")
+    @Operation(summary = "병원 등록", description = "병원 관계자에게 병원 정보를 받아 병원을 등록하는 API입니다.")
     public BaseResponse<HospitalDto.HospitalResponse> register(@RequestBody HospitalDto.HospitalRequest dto) {
         HospitalDto.HospitalResponse hospitalResponse = hospitalService.save(dto);
         return BaseResponse.success(hospitalResponse);

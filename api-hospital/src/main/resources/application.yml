@@ -27,3 +27,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+springdoc:
+  api-docs:
+    path: /hospital/v3/api-docs
+  swagger-ui:
+    path: /hospital/swagger-ui.html
